@@ -1,3 +1,73 @@
-* {
+body {
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e6e4d9;
+    /* padding: 0; */
+}
+
+header {
+    background-color: #a593c2;
+    height: 60px;
+    width: auto;
+}
+
+nav {
+    width: 1000px;
+    margin: 0 auto 20px;
+    padding: 0;
+}
+
+#navhead {
+    text-align: center;
+}
+
+div {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #e6e4d9;
+}
+
+#leftmenu {
+    width: 22%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+#lefthead {
+    text-align: right;
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+.searchbox {
+    padding: 5px;
+    margin: 10px 10px;
+    width: 150px;
+    float: right;
+}
+
+main {
+    float: right;
+    width: 78%;
+    margin: auto;
+    height: 500px;
+}
+
+article {
+    margin: 20px;
+    padding: 5px;
+    text-align: center;
+    align-content: center;
+}
+
+footer {
+    clear: both;
+    width: 100%;
+}
+
+header, footer, section, aside, main, article, nav, figure {
+    display: block;
 }
