@@ -20,6 +20,11 @@ header {
     }
 }
 
+article, section {
+    margin: 20px;
+    padding: 5px;
+}
+
 div {
     width: 100%;
     margin: 0;
@@ -67,9 +72,9 @@ main {
 
 #ourstory{
     /* margin: 10px 10px 0 10px;
-    padding: 5px 5px 0 5px; */
+    padding: 5px 5px 0 5px;
     margin: 20px;
-    padding: 5px;
+    padding: 5px; */
     text-align: justify;
     h3{    
         text-align: left;
@@ -85,8 +90,8 @@ main {
 }
 
 #store{
-    margin: 20px;
-    padding: 5px;
+    /* margin: 20px;
+    padding: 5px; */
 
     h2{
         color:#a593c2;
@@ -100,7 +105,11 @@ main {
             border-width: 4px;
             border-style: inset;
             border-color: #a593c2;
-            background-color: #a593c2ad;
+            background-color: #23cfa7ad;
+            /* color: #8f6cc2; */
+            /* background-color: #a593c2ad;
+            color: #23cfa7; */
+
             
             img{
                 width: 200px; 
@@ -117,9 +126,16 @@ main {
     }
 }
 
-#special{
+/* #special{
     margin: 20px;
     padding: 5px;
+} */
+
+#cartmain{
+    h2{
+        color: #23cfa7;
+    }
+
 }
 
 footer {
