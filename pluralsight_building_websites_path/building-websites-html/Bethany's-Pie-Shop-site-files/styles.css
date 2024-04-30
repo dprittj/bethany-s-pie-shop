@@ -138,6 +138,15 @@ main {
 
 }
 
+.contactform{
+    .contactlabel{
+        text-align: left;
+        width: 30px;
+        
+    }
+}
+
+
 footer {
     clear: both;
     width: 100%;

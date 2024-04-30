@@ -6,6 +6,7 @@
     <title>Bethany's Pie Shop Template</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <script src="script.js"></script>
   </head>
   <body>
 
@@ -49,11 +50,22 @@
                 Brussels, Belgium
             </p>
             <p>
-                You can also contact us by email <a href="mailto:info@bethanyspieshop.com">here</a>, or leave your comment and contact information below and we will receive your message shortly!
+                You can also contact us by email <a href="mailto:info@bethanyspieshop.com">here</a>, or submit your comment and contact information in the form below and we will receive your message shortly!
             </p>
-            <input type="text" aria-label="name"> <br>
-            <input type="text" aria-label="email address"> <br>
-            <input type="text" aria-label="Comment">
+            <form action="" method="post" class="contactform">
+              <div>
+                <label for="name" class="contactlabel">Name:</label>
+                <input type="text" id="name" class="contactinput"> <br>
+
+                <label for="email" class="contactlabel">Email:</label>
+                <input type="text" id="email" class="contactinput"> <br>
+
+                <label for="comment" class="contactlabel">Comment:</label>
+                <textarea name="textcomment" class="contactinput" id="comment" cols="30" rows="10">Leave your comment here.</textarea>
+                <!-- <input type="text" id="comment"> -->
+                <button type="submit" class="contactinput">Submit</button>
+              </div>
+            </form>
         </section>
 
       </main>
