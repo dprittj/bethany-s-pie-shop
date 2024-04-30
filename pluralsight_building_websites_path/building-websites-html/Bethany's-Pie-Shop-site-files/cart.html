@@ -6,7 +6,7 @@
     <title>Bethany's Pie Shop - Customer Cart</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="./assets/favicon.png">
-    <script src="script.js"></script>
+    <script src="./scripts/cart.js"></script>
   </head>
   <body>
 
@@ -41,6 +41,23 @@
         <section id="cartmain">
             <h2>Your Cart</h2>
             <div>
+              <table id="tablecart">
+                <thead>Your Cart
+                  <th>items</th>
+                </thead>
+                <tr id="trName">
+                  <td>Pie:</td>
+                  <td id="pieName" class="tdName">[pieName]</td>
+                </tr>
+                <tr id="trQuant">
+                  <td>Quantity:</td>
+                  <td id="quant" class="tdQuant">[#]</td>
+                </tr>
+                <tr id="trPrice">
+                  <td>Price:</td>
+                  <td id="piePrice" class="tdPrice">[piePrice]</td>
+                </tr>
+              </table>
 
             </div>
         </section>

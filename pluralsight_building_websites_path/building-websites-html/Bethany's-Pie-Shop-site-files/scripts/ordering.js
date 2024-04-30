@@ -12,11 +12,6 @@ window.addEventListener("DOMContentLoaded", ()=>{
             const pieName = btn.getAttribute("data-name");
             const piePrice = btn.getAttribute("data-price");
 
-            // let i = 1;
-            // while (cartObject.length !== 0){
-            // }
-
-            // const save = window.Storage;
             console.log("Order created.");
 
             if(cart.length == 0){
@@ -40,14 +35,10 @@ window.addEventListener("DOMContentLoaded", ()=>{
                 const addPie = addOrder.pie.push(pieName);
                 const addPrice = addOrder.price.push(piePrice);
 
-                // addOrder.pie = addPie;
-                // addOrder.price = addPrice;
-
                 console.log("Order updated: " + addOrder);
                 cart.setItem("Ordering", JSON.stringify(addOrder));
 
                 console.log("Ordering updated: " + addOrder);
-                // console.log(order);
             };
         });
     });
