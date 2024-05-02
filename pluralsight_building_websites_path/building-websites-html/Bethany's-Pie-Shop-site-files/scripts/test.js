@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
     function cartSummary(arr){
 
-        for (let i = 0; i < pielist.length; i++){
+        for (let i = 0; i < pielist.length - 1; i++){
 
             let pieNum = 1;
             const aPie = pielist[i];
@@ -22,19 +22,35 @@ window.addEventListener("DOMContentLoaded", ()=>{
                 const bPie = pielist[j];
 
                 if (aPie == bPie){
-                    
-                    console.log("if = True: " + i, aPie, j, bPie);
 
                     pieNum += 1;
-                }
 
-                console.log("if = False: " + i, aPie, j, bPie);
+                }
             }
             console.log("Pie: " + aPie + ", Number: " + pieNum);
         }
     }
 
-    cartSummary(pielist);
+    // cartSummary(pielist);
+
+
+
+    function readCart(arr){
+
+        for (let i = 0; i < arr.length; i++){
+
+            // const aPie = arr[i];
+
+            const arrNum = [i];
+
+            const newArr = arr.shift();
+
+            const pieArr = arrNum.concat(newArr);
+
+            console.log(pieArr);
+        }
+    }
+    readCart(pielist);
     
 });
 
