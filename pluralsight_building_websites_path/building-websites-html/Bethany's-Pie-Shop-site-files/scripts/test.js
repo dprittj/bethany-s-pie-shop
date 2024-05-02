@@ -12,6 +12,8 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
     function cartSummary(arr){
 
+        let total = 0;
+
         for (let i = 0; i < pielist.length - 1; i++){
 
             let pieNum = 1;

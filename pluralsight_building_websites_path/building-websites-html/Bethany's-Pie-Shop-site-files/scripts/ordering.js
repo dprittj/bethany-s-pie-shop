@@ -6,12 +6,17 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
     allOrderBtns.forEach((button)=>{
 
+        // let total = 0;
+        // const pieOrder = [];
+
         button.addEventListener("click", (e)=>{
 
             const btn = e.currentTarget;
             const pieName = btn.getAttribute("data-name");
             const piePrice = btn.getAttribute("data-price");
 
+            // total += 1;
+            
             console.log("Order created.");
 
             if(cart.length == 0){
@@ -19,6 +24,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
                 const order = {
                     pie: [pieName],
                     price: [piePrice]
+                    // quantity: [total]
                 };
 
                 cart.setItem("Ordering", JSON.stringify(order));
