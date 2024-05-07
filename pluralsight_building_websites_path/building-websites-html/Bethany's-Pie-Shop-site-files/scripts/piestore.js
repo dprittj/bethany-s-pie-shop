@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", ()=>{
 
     const cart = window.localStorage;
-    const orderArray = [];
+    const pieOrder = [];
 
     const allOrderBtns = document.querySelectorAll(".order");
     
@@ -10,53 +10,49 @@ window.addEventListener("DOMContentLoaded", ()=>{
         // let total = 0;
         // const pieOrder = [];
         let quantity = 0;
-        let pieInfo = [];
+        const pieArray = [];
         
         button.addEventListener("click", (e)=>{
 
             // let quantity = 0;
-            // let pieArray = [];
+            // const pieArray = [];
             const btn = e.currentTarget;
 
             const pieName = btn.getAttribute("data-name");
             const piePrice = btn.getAttribute("data-price");
 
-            // setItem("key", value); where value = an []orderArray consisting of one []pieInfo for each kind of pie ordered.
+            // setItem("key", value); where value = an []orderArray consisting of []pieArray's, one for each pie ordered.
             
-            if (pieInfo.length == 0){
+            if (pieArray.length == 0){
                 // if the array is empty, this block adds the pieName and a quantity of 1 for the array; then returns the array and quantity;
 
-                pieInfo.push(pieName);
+                pieArray.push(pieName, piePrice);
                 quantity += 1;
-                pieInfo.push("quantity: " + quantity);
+                pieArray.push("quantity: " + quantity);
     
-                console.log("Order created: " + pieInfo);
+                console.log("Order created.");
+                console.log(pieArray);
 
-                return pieInfo, quantity;
+                return pieArray, quantity;
 
-            } else if (pieInfo.includes(pieName)){
-                // if []pieInfo contains pieName, quantity updates by one (for each click), replaces quantity value inside []pieInfo, and returns new, updated values for quantity and []pieInfo;
+            } else if (pieArray.includes(pieName)){
+                // if the array already has the pieName, this code block updates the quantity by one (for each click), and updates the quantity inside the pieArray, and returns the quantity and the array;
 
                 quantity +=1;
-                const countIndex = pieInfo.indexOf(quantity);
-                pieInfo.splice(countIndex, 1, quantity);
+                const countIndex = pieArray.indexOf(quantity);
+                pieArray.splice(countIndex, 1, quantity);
 
-                console.log("Quantity updated: "+ pieInfo);
+                console.log("Quantity updated.");
+                console.log(pieArray);
 
-                return pieInfo, quantity;
+                return pieArray, quantity;
 
-            } else if (!(pieInfo.includes(pieName)) && pieArray.length > 0){
+            } else if (!(pieArray.includes(pieName)) && pieArray.length > 0){
                 // this throws an error if the array is not empty, but also does not contain the pieName;
 
                 console.log("error");
 
             };
-
-            cart.setItem("Ordering", JSON.stringify(order));
-
-            console.log("Order saved.")
-            console.log(JSON.stringify(order));
-
 
             // if(cart.length == 0){
 
@@ -82,10 +78,19 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
             // }
 
-
-
-
-
         });
+
+        if (cart.length==0){
+
+            pieOrder.push(pieArray);
+            cart.setItem("order", JSON.stringify(pieOrder));
+
+        } else {
+            cart.getItem("order", JSON.parse(pieOrder));
+
+            pieOrder.push(pieArray);
+            cart.setItem("order", JSON.stringify(pieOrder));
+
+        }
     });
 });
