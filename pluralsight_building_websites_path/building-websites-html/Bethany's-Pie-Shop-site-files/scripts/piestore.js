@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
         // let total = 0;
         // const pieOrder = [];
         let quantity = 0;
-        const pieInfoArr = [];
+        let pieInfoArr = [];
         
         button.addEventListener("click", (e)=>{
             // let quantity = 0;
@@ -22,7 +22,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
             function initialOrder(){
 
-                console.log("CONDITION: TRUE; cart length == 0 && pieInfoArr == 0");
+                console.log("CONDITION: TRUE--cart empty");
                 pieInfoArr.push(pieName, piePrice);
                 quantity += 1;
                 pieInfoArr.push(quantity);
@@ -33,14 +33,15 @@ window.addEventListener("DOMContentLoaded", ()=>{
         
                 cart.setItem("order", JSON.stringify(orderArr));
                 const orderJson = cart.getItem("order");
-                console.log("ORDER SAVED: "+orderJson);
+                console.log("ORDER SAVED: (Non-Parsed): "+orderJson);
+                console.log("(Parsed): "+JSON.parse(orderJson));
         
                 return pieInfoArr, quantity;
             }
 
             // setItem("key", value); where value = an []orderArr consisting of a []pieInfoArr for each pie ordered.
             
-            if ((cart.length == 0) && (pieInfoArr.length == 0)){
+            if ((cart.length == 0)){
                 // if the array is empty, this block adds the pieName and a quantity of 1 for the array; then returns the array and quantity;
 
                 initialOrder();
@@ -58,42 +59,120 @@ window.addEventListener("DOMContentLoaded", ()=>{
                 // console.log("order stored: "+orderJson);
 
                 // return pieInfoArr, quantity;
+            } else { 
 
-                } else if (pieInfoArr.includes(pieName)){
-                // if the array already has the pieName, this code block updates the quantity by one (for each click), and updates the quantity inside the pieArray, and returns the quantity and the array;
+                orderArr = JSON.parse(cart.getItem("order"));
+                console.log(orderArr);
+                console.log("orderArr length: "+orderArr.length);
 
-                    const countIndex = pieInfoArr.indexOf(quantity);
-                    pieInfoArr.splice(countIndex, 1, quantity);
-                    quantity +=1;
+                for (let i = 0; i < orderArr.length; i++){
 
-                    console.log("Quantity updated: "+pieInfoArr);
+                    let pieInfo = orderArr[i];
+                    console.log("Loop count: " + i);
 
-                    const updating = cart.getItem("order");
-                    orderArr = JSON.parse(updating);
+                    for(let j= 0; j<pieInfo.length; j++){
 
-                    for (let i = 0; i<orderArr.length; i++){
-                        if (orderArr[i].includes(pieName))
-                            console.log("previous order: "+orderArr)
-                            orderArr.splice(orderArr[i], 1);
-                            console.log("Order updating...")
-                    };
+                        if(pieInfo.includes(pieName)){
+                            console.log("Item identified.")
 
-                    // console.log("updating: "+JSON.parse(updating));
-                    orderArr.push(pieInfoArr);
-                    console.log("orderArr: "+orderArr);
+                            quantity +=1;
+                            // const countIndex = pieInfoArr.indexOf(quantity);
+                            pieInfo.splice(pieInfo.indexOf(quantity), 1, quantity);
 
-                    // array containing pieName being updated needs to be spliced from pieOrder
+                            orderArr.splice(pieInfo, 1);
+                            console.log("Log")
+
+                            console.log("UPDATING..."+orderArr);
+                            
+                            console.log("ADDING UPDATED PIE INFO: "+pieInfo);
+        
+                            // const updating = cart.getItem("order");
+                            // orderArr = JSON.parse(updating);
+        
+                            // for (let i = 0; i<orderArr.length; i++){
+                            //     if (orderArr[i].includes(pieName))
+                            //         console.log("previous order: "+orderArr)
+                            //         orderArr.splice(orderArr[i], 1);
+                            //         console.log("Order updating...")
+                            // };
+
+
+                            // quantity +=1;
+                            // const countIndex = pieInfoArr.indexOf(quantity);
+                            // pieInfoArr.splice(countIndex, 1, quantity);
+                            
+                            // console.log(pieInfoArr);
+        
+                            // console.log("Quantity updated: "+pieInfoArr);
+        
+                            // const updating = cart.getItem("order");
+                            // orderArr = JSON.parse(updating);
+        
+                            // for (let i = 0; i<orderArr.length; i++){
+                            //     if (orderArr[i].includes(pieName))
+                            //         console.log("previous order: "+orderArr)
+                            //         orderArr.splice(orderArr[i], 1);
+                            //         console.log("Order updating...")
+                            // };
+        
+                            // console.log("updating: "+JSON.parse(updating));
+
+                            // orderArr.push(pieInfoArr);
+                            // console.log("orderArr: "+orderArr);
+        
+                            // array containing pieName being updated needs to be spliced from pieOrder
+                            
+        
+                            // cart.setItem("order", JSON.stringify(orderArr));
+        
+                            return orderArr, quantity;
+                        } else {console.log("No item identified.")}
+                    }
+                }
+
+                orderArr.push(pieInfoArr);
+                console.log("orderArr(updated): "+orderArr);
+
+                cart.setItem("order", JSON.stringify(orderArr));
+
+
+            }
+
+                // } else if (pieInfoArr.includes(pieName)){
+                // // if the array already has the pieName, this code block updates the quantity by one (for each click), and updates the quantity inside the pieArray, and returns the quantity and the array;
+
+                //     const countIndex = pieInfoArr.indexOf(quantity);
+                //     pieInfoArr.splice(countIndex, 1, quantity);
+                //     quantity +=1;
+
+                //     console.log("Quantity updated: "+pieInfoArr);
+
+                //     const updating = cart.getItem("order");
+                //     orderArr = JSON.parse(updating);
+
+                //     for (let i = 0; i<orderArr.length; i++){
+                //         if (orderArr[i].includes(pieName))
+                //             console.log("previous order: "+orderArr)
+                //             orderArr.splice(orderArr[i], 1);
+                //             console.log("Order updating...")
+                //     };
+
+                //     // console.log("updating: "+JSON.parse(updating));
+                //     orderArr.push(pieInfoArr);
+                //     console.log("orderArr: "+orderArr);
+
+                //     // array containing pieName being updated needs to be spliced from pieOrder
                     
 
-                    cart.setItem("order", JSON.stringify(orderArr));
+                //     cart.setItem("order", JSON.stringify(orderArr));
 
-                    return pieInfoArr, quantity;
+                //     return pieInfoArr, quantity;
 
-                } else if (!(pieInfoArr.includes(pieName)) && pieInfoArr.length > 0){
-                // this throws an error if the array is not empty, but also does not contain the pieName;
+            //     else if (!(pieInfoArr.includes(pieName)) && pieInfoArr.length > 0){
+            //     // this throws an error if the array is not empty, but also does not contain the pieName;
 
-                    console.log("error");
-            };
+            //         console.log("error");
+            // };
 
             /* if (cart.length==0){
 
