@@ -57,7 +57,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
                     let pieInfo = orderArr[i];
                     console.log("Loop count: " + i);
 
-                    for(let j= 0; j<pieInfo.length; j++){
+                    // for(let j= 0; j<pieInfo.length; j++){
 
                         if(pieInfo.includes(pieName)){
                             console.log("Item identified.")
@@ -73,10 +73,10 @@ window.addEventListener("DOMContentLoaded", ()=>{
                             
                             console.log("ADDING UPDATED PIE INFO: "+pieInfo);
         
-                            return orderArr, pieInfo, quantity;
+                            // return orderArr, pieInfo, quantity;
                         } else {
                             console.log("No item identified.")}
-                    }
+                    // }
                 }
 
                 orderArr.push(pieInfoArr);

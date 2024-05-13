@@ -125,8 +125,9 @@ window.addEventListener("DOMContentLoaded", ()=>{
         
                             // cart.setItem("order", JSON.stringify(orderArr));
         
-                            return orderArr, quantity;
-                        } else {console.log("No item identified.")}
+                            return orderArr, pieInfo, quantity;
+                        } else {
+                            console.log("No item identified.")}
                     }
                 }
 
