@@ -4,9 +4,9 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
     class Pie {
         constructor(pieName, piePrice, quantity = 1) {
-           this.name = pieName;
-           this.price = piePrice;
-           this.quantity = quantity;
+            this.name = [pieName];
+            this.price = [piePrice];
+            this.quantity = [quantity];
         }
      }
 
@@ -32,12 +32,23 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
                 const order = JSON.parse(cart.getItem("order"));
 
-                if (pieName == order.name){
+                if (order.name.includes(pieName)){
 
-                    order.quantity += 1;
+                    let quantity = order.quantity.pop();
+                    quantity += 1;
+                    order.quantity.push(quantity);
+
                     cart.setItem("order", JSON.stringify(order));
+                    console.log("Quantity updated.");
                 
+                } else {
+
+                const pieOrder = new Pie(pieName, piePrice);
+
+                cart.setItem("order", JSON.stringify(pieOrder, order));
+
                 }
+
             }
 
         });
