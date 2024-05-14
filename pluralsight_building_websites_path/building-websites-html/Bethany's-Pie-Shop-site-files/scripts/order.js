@@ -8,7 +8,9 @@ window.addEventListener("DOMContentLoaded", ()=>{
             this.price = [piePrice];
             this.quantity = [quantity];
         }
-     }
+    }
+
+    let totalOrder = [];
 
     const orderButtons = document.querySelectorAll(".order");
 
@@ -23,20 +25,23 @@ window.addEventListener("DOMContentLoaded", ()=>{
             if (cart.length == 0){
                 const pieOrder = new Pie(pieName, piePrice);
 
-                cart.setItem("order", JSON.stringify(pieOrder));
+                totalOrder.push(pieOrder);
+
+                cart.setItem("order", JSON.stringify(totalOrder));
 
                 if(cart.length == 1){
-                    console.log("Order saved.")
+                    console.log("Order saved. " + JSON.stringify(totalOrder));
                 }
             } else {
 
                 const order = JSON.parse(cart.getItem("order"));
+                console.log(order);
 
-                if (order.name.includes(pieName)){
+                if (order[0].name.includes(pieName)){
 
-                    let quantity = order.quantity.pop();
+                    let quantity = order[0].quantity.pop();
                     quantity += 1;
-                    order.quantity.push(quantity);
+                    order[0].quantity.push(quantity);
 
                     cart.setItem("order", JSON.stringify(order));
                     console.log("Quantity updated.");
@@ -45,7 +50,13 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
                 const pieOrder = new Pie(pieName, piePrice);
 
-                cart.setItem("order", JSON.stringify(pieOrder, order));
+                const order = JSON.parse(cart.getItem("order"));
+
+                order.push(pieOrder);
+
+                cart.setItem("order", JSON.stringify(order));
+
+                console.log("Order updated." + JSON.stringify(order));
 
                 }
 
