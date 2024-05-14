@@ -12,12 +12,15 @@ class Order {
    }
 }
 
-order {
-   totalOrder[
-      {
-         name: x,
-         price: x,
-         quantity: x,
-      }
-   ]
-}
+/* order:
+   "[
+
+      [0] {"name":["Summer Apple Pie"],"price":["18.95"],"quantity":[3]},
+
+      [1] {"name":["Blueberry Cheesecake"],"price":["17.95"],"quantity":[2]}
+
+
+   ]"
+
+*/
+
